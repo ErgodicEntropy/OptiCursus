@@ -8,7 +8,7 @@ Whether you're a student looking for the best fit for your academic and career g
 
 ## Product Management
 ### Problem Statement
-Students suffer from having to choose between a myriad of cursus programs in the limits of imperfect information settings, limiting thereby the quality of their decisions which leads to misalignment, and later, burnout. 
+Students suffer from having to choose between a myriad of similarly sounding cursus programs in the limits of both quantitative and qualitative imperfect information settings (bounded rationality), limiting thereby the quality of their decisions which leads to misalignment, and later, burnout. 
 ### Stakeholders/End Users 
 Students looking for a cursus program that is optimal and best aligned with their profile, eligibility and preference or interest.
 ### Product Roadmap
