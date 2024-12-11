@@ -16,7 +16,3 @@ Students looking for a cursus program that is optimal and best aligned with thei
 Ensure high-quality decision-making for the students to avoid bad career choices
 #### Product Strategy (Project Scope)
 Sort out the optimal cursus programs according to the student's profile, eligibility and preference or interest
-
-
-
-kxdjfvsjp[lsdfc[scfs
