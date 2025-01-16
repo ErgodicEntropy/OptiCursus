@@ -96,7 +96,116 @@ OptiCursus is designed to evolve and scale, ensuring long-term value for users a
 3. **Scalability**: Designed to grow with user needs, from local to global program coverage.
 4. **Comprehensive Database**: Offers a wide range of programs with detailed metadata for accurate matching.
 
----
+## **Key Benefits**
+- **Personalization**: Tailored recommendations based on the student’s unique profile and preferences.
+- **Efficiency**: Saves time by filtering out mismatched programs.
+- **Confidence**: Helps students make informed decisions with data-driven insights.
+- **Diversity**: Ensures a balanced mix of safe and aspirational choices.
 
-## Future Vision
-OptiCursus aims to become the **global standard** for program selection, empowering students to make informed, confident decisions about their education and career paths. By continuously integrating cutting-edge technologies and expanding its database, OptiCursus will remain at the forefront of educational innovation.
+
+## System Engineering
+
+### OptiCursus Product Backlog (Functional Analysis)
+
+| **Priority** | **Feature**                                                                 | **Tech Stack**                                                                                   |
+|--------------|-----------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------|
+| 1            | **User Registration & Profile Creation**                                   | - Frontend: React.js, Tailwind CSS<br>- Backend: Node.js, Express.js<br>- Database: MongoDB      |
+|              | Allow students to create accounts and input their profile details (academic background, skills, preferences, etc.). |                                                                                                  |
+| 2            | **Program Database Integration**                                           | - Backend: Node.js, Express.js<br>- Database: MongoDB<br>- Data Integration: REST APIs, Web Scraping Tools |
+|              | Build a comprehensive database of cursus programs with metadata (entry requirements, curriculum, outcomes, etc.). |                                                                                                  |
+| 3            | **Basic Matching Algorithm**                                               | - Backend: Python (Pandas, NumPy)<br>- AI/ML: Scikit-learn<br>- Database: MongoDB               |
+|              | Implement a basic algorithm to match student profiles with programs based on eligibility and preferences. |                                                                                                  |
+| 4            | **User-Friendly Interface for Recommendations**                            | - Frontend: React.js, Tailwind CSS<br>- Backend: Node.js, Express.js                            |
+|              | Display tailored program recommendations in an intuitive, easy-to-navigate interface. |                                                                                                  |
+| 5            | **Program Comparison Tool**                                                | - Frontend: React.js, Chart.js<br>- Backend: Node.js, Express.js                                |
+|              | Allow students to compare recommended programs side-by-side based on key metrics (e.g., curriculum, career outcomes). |                                                                                                  |
+| 6            | **Advanced AI-Powered Matching**                                           | - AI/ML: TensorFlow, PyTorch<br>- Backend: Python (Flask/Django)<br>- Database: MongoDB         |
+|              | Enhance the matching algorithm with AI to include predictive insights (e.g., career prospects, satisfaction). |                                                                                                  |
+| 7            | **Context-Aware Explanations**                                             | - AI/ML: Natural Language Processing (NLP) with GPT-based models<br>- Backend: Python (Flask/Django) |
+|              | Provide explanations for why a program is recommended, using AI to generate context-aware insights. |                                                                                                  |
+| 8            | **Mobile App Development**                                                 | - Mobile: React Native<br>- Backend: Node.js, Express.js<br>- Database: MongoDB                 |
+|              | Launch a mobile app version of OptiCursus for on-the-go access.            |                                                                                                  |
+| 9            | **Institutional Partnerships & Data Expansion**                            | - Backend: Node.js, Express.js<br>- Data Integration: REST APIs, Web Scraping Tools             |
+|              | Collaborate with universities and colleges to expand the program database and ensure data accuracy. |                                                                                                  |
+| 10           | **Gamification Features (Quizzes, Progress Tracking)**                     | - Frontend: React.js, D3.js<br>- Backend: Node.js, Express.js<br>- Database: MongoDB            |
+|              | Introduce interactive quizzes and progress tracking to engage students and refine recommendations. |                                                                                                  |
+| 11           | **Global Program Expansion**                                               | - Backend: Node.js, Express.js<br>- Data Integration: REST APIs, Web Scraping Tools             |
+|              | Expand the database to include international programs and eligibility criteria. |                                                                                                  |
+| 12           | **Career Pathway Integration**                                             | - AI/ML: TensorFlow, PyTorch<br>- Backend: Python (Flask/Django)<br>- Database: MongoDB         |
+|              | Link program recommendations to long-term career pathways and job market trends. |                                                                                                  |
+| 13           | **AI-Powered Virtual Counseling**                                          | - AI/ML: GPT-based models, NLP<br>- Backend: Python (Flask/Django)<br>- Frontend: React.js      |
+|              | Offer virtual counseling sessions powered by AI to provide personalized guidance. |                                                                                                  |
+| 14           | **Analytics Dashboard for Institutions**                                   | - Frontend: React.js, Chart.js<br>- Backend: Node.js, Express.js<br>- Database: MongoDB         |
+|              | Provide educational institutions with analytics on student preferences and program alignment. |                                                                                                  |
+| 15           | **Multilingual Support**                                                   | - Frontend: React.js, i18n<br>- Backend: Node.js, Express.js                                   |
+|              | Add support for multiple languages to cater to a global audience.          |                                                                                                  |
+
+
+### Logical Architecture
+![Logical Architecture](diagrams/Logical%20Architecture%20(Level%201).jpeg)
+#### Component Analysis
+
+**1. Student Input**
+The system relies on two main types of input from the student: **Preferences** and **Profile**.
+
+- **a. Preferences**
+  - **Favorite Subjects**: Subjects the student enjoys or excels in (e.g., mathematics, literature, biology).
+  - **Career Goals**: Desired career paths or industries (e.g., software engineering, medicine, finance).
+  - **Learning Style**: Preferred methods of learning (e.g., hands-on, theoretical, collaborative).
+  - **Passions/Hobbies**: Non-academic interests that could influence program choice (e.g., music, sports, coding).
+  - **Location Preferences**: Preferred study locations (e.g., local, international, specific countries).
+
+- **b. Profile**
+  - **Academic Background**: Grades, courses taken, and academic achievements (CV or Resume).
+  - **Skills**: Technical or soft skills (e.g., programming, public speaking, teamwork).
+  - **Eligibility**: Entry requirements met (e.g., standardized test scores, prerequisite courses).
+  - **Achievements**: Awards, certifications, or extracurricular activities.
+  - **Constraints**: Limitations such as budget, time, or accessibility.
+
+
+**2. System Processing**
+The system processes the student's input using advanced algorithms and strategies.
+
+- **a. Multi-Redundancy Elimination (GINI Index Minimization)**
+  - **Purpose**: Ensures recommendations are diverse and non-redundant.
+  - **How It Works**:
+    - Uses the **GINI Index** to evaluate diversity.
+    - Minimizes redundancy by recommending programs that cover a wide range of options.
+    - Example: Recommends blended programs (e.g., computational finance) instead of only pure computer science or business programs.
+
+- **b. Eligibility Score**
+  - **Purpose**: Evaluates how well the student meets the entry requirements for each program.
+  - **How It Works**:
+    - Calculates a score based on the student’s academic background, skills, and achievements.
+    - Ranks programs by how closely the student’s profile matches their eligibility criteria.
+    - Example: Prioritizes programs requiring a high GPA if the student meets this criterion.
+
+- **c. Multi-Factored Optimization**
+  - **Purpose**: Balances multiple factors (e.g., preferences, profile, eligibility) to find the best-fit programs.
+  - **How It Works**:
+    - Uses **weighted optimization** to prioritize factors based on their importance to the student.
+    - Example: Recommends programs with strong career outcomes if the student prioritizes career goals over location.
+
+- **d. Barbell Strategy**
+  - **Purpose**: Balances **safe choices** and **aspirational choices** in the recommendations.
+  - **How It Works**:
+    - Recommends a mix of:
+      1. **Safe Choices**: Programs where the student is highly likely to be accepted and succeed.
+      2. **Aspirational Choices**: Programs that are more competitive or challenging but align with the student’s long-term goals.
+    - Example: Recommends both local universities (safe) and competitive international programs (aspirational).
+
+
+**3. Output: Aligned Cursus Programs**
+The final output is a list of **Aligned Cursus Programs** that match the student’s profile, preferences, and goals. Each recommendation includes:
+
+  - **Program Details**: Name, institution, curriculum, duration, and location.
+  - **Alignment Score**: A score indicating how well the program aligns with the student’s input.
+  - **Eligibility Status**: Whether the student meets the program’s entry requirements.
+  - **Career Outcomes**: Potential career paths and job prospects after completing the program.
+  - **Comparison Metrics**: Key metrics (e.g., cost, acceptance rate, student satisfaction) to help the student compare programs.
+
+
+
+
+### Physical Architecture
+#### Component Analysis
