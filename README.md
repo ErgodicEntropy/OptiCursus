@@ -106,7 +106,101 @@ OptiCursus is designed to evolve and scale, ensuring long-term value for users a
 ## System Engineering
 
 ### Logical Architecture
-![Logical Architecture](diagrams/Logical%20Architecture%20(Level%201).jpeg)
+![Logical Architecture](diagrams/Logical%20Architecture.jpeg)
+#### Component Analysis
+
+**1. Student Input**
+The system relies on two main types of input from the student: **Preferences** and **Profile**.
+
+- **Preferences**
+  - **Favorite Subjects**: Subjects the student enjoys or excels in (e.g., mathematics, literature, biology).
+  - **Career Goals**: Desired career paths or industries (e.g., software engineering, medicine, finance).
+  - **Learning Style**: Preferred methods of learning (e.g., hands-on, theoretical, collaborative).
+  - **Passions/Hobbies**: Non-academic interests that could influence program choice (e.g., music, sports, coding).
+  - **Location Preferences**: Preferred study locations (e.g., local, international, specific countries).
+
+- **Profile**
+  - **Academic Background**: Grades, courses taken, certifications, projects, and academic achievements (CV, Resume, Potrfolio).
+  - **Skills**: Technical or soft skills (e.g., programming, public speaking, teamwork).
+  - **Eligibility**: Entry requirements met (e.g., standardized test scores, prerequisite courses).
+  - **Achievements**: Awards, certifications, or extracurricular activities.
+  - **Constraints**: Limitations such as budget, time, or accessibility.
+
+
+**2. Matching Algorithm (OptiCursus Engine)**
+The system processes the student's input using advanced algorithms and strategies to generate optimal program recommendations.
+
+  - **Operations Research Agent**
+    - **Purpose**: Ensures recommendations are diverse, non-redundant, and optimized for the student’s unique profile.
+    - **How It Works**:
+      - Applies **operations research techniques** to analyze and optimize program recommendations.
+      - Uses the **GINI Index** to measure the diversity of recommendations and minimize redundancy.
+      - Ensures a balanced mix of programs that cover a wide range of options, avoiding over-concentration in a single field.
+      - Example: Recommends interdisciplinary programs (e.g., computational finance) instead of only pure computer science or business programs.
+
+  - **Optimization Algorithm**
+    - **Purpose**: Evaluates how well the student meets the entry requirements for each program and optimizes recommendations based on eligibility.
+    - **How It Works**:
+      - Calculates an **eligibility score** based on the student’s academic background, skills, and achievements.
+      - Ranks programs by how closely the student’s profile matches their eligibility criteria.
+      - Uses **constraint optimization** to ensure recommendations align with the student’s constraints (e.g., budget, location, time).
+      - Example: Prioritizes programs requiring a high GPA if the student meets this criterion.
+
+  - **Investment Agent**
+    - **Purpose**: Balances multiple factors (e.g., preferences, profile, eligibility) to find the best-fit programs, treating the decision like an investment in the student’s future.
+    - **How It Works**:
+      - Uses **weighted optimization** to prioritize factors based on their importance to the student.
+      - Considers trade-offs between preferences (e.g., career goals, location) and constraints (e.g., budget, time).
+      - Example: Recommends programs with strong career outcomes if the student prioritizes career goals over location.
+
+  - **Investment Strategy**
+    - **Purpose**: Balances **safe choices** and **aspirational choices** in the recommendations, similar to an investment portfolio strategy.
+    - **How It Works**:
+      - Recommends a mix of:
+        1. **Safe Choices**: Programs where the student is highly likely to be accepted and succeed, ensuring a solid foundation.
+        2. **Aspirational Choices**: Programs that are more competitive or challenging but align with the student’s long-term goals, encouraging ambition.
+      - Example: Recommends both local universities (safe) and competitive international programs (aspirational).
+
+**3. Output: Aligned Cursus Programs**
+The final output is a list of **Aligned Cursus Programs** that match the student’s profile, preferences, and goals.
+
+**4. Post Processing**
+  - **Recommendation**
+    - **Program Details**: Name, institution, curriculum, duration, and location.
+    - **Alignment Score**: A score indicating how well the program aligns with the student’s input.
+    - **Eligibility Status**: Whether the student meets the program’s entry requirements.
+    - **Career Outcomes**: Potential career paths and job prospects after completing the program.
+    - **Comparison Metrics**: Key metrics (e.g., cost, acceptance rate, student satisfaction) to help the student compare programs.
+  - **Context-Aware Explanation**
+    - **Purpose**: Provides clear, context-aware explanations for why a program is recommended, helping students understand the reasoning behind each suggestion.
+    - **How It Works**:
+      - Uses **natural language processing (NLP)** to generate explanations tailored to the student’s profile and preferences.
+      - Highlights key factors (e.g., alignment with career goals, eligibility status) that influenced the recommendation.
+      - Example: “This program is recommended because it aligns with your interest in data science and offers strong career outcomes in your preferred location.”
+
+  - **Programs Comparison**
+    - **Purpose**: Allows students to compare recommended programs side-by-side, making it easier to evaluate trade-offs and make informed decisions.
+    - **How It Works**:
+      - Displays key metrics (e.g., cost, duration, acceptance rate) in a tabular or visual format.
+      - Enables students to rank programs based on their priorities (e.g., cost vs. career outcomes).
+      - Example: Compare two programs based on cost, location, and career outcomes.
+
+  - **Career Pathways Exploration**
+    - **Purpose**: Helps students explore long-term career pathways associated with recommended programs, connecting education to future opportunities.
+    - **How It Works**:
+      - Links programs to potential career paths and job market trends.
+      - Provides insights into salary ranges, job growth, and required skills for each career.
+      - Example: Show how a Master’s in Data Science can lead to careers as a Data Scientist, Machine Learning Engineer, or Business Analyst.
+
+  - **Virtual Counseling**
+    - **Purpose**: Offers personalized guidance through AI-powered virtual counseling, simulating a one-on-one counseling session.
+    - **How It Works**:
+      - Uses **AI chatbots** or **virtual assistants** to answer student questions and provide recommendations.
+      - Offers tailored advice based on the student’s profile and preferences.
+      - Example: A virtual counselor explains why a specific program is a good fit and answers questions about application requirements.
+
+
+<!-- ### Physical Architecture
 #### Component Analysis
 
 **1. Student Input**
@@ -125,7 +219,6 @@ The system relies on two main types of input from the student: **Preferences** a
   - **Eligibility**: Entry requirements met (e.g., standardized test scores, prerequisite courses).
   - **Achievements**: Awards, certifications, or extracurricular activities.
   - **Constraints**: Limitations such as budget, time, or accessibility.
-
 
 **2. System Processing**
 The system processes the student's input using advanced algorithms and strategies.
@@ -166,10 +259,4 @@ The final output is a list of **Aligned Cursus Programs** that match the student
   - **Alignment Score**: A score indicating how well the program aligns with the student’s input.
   - **Eligibility Status**: Whether the student meets the program’s entry requirements.
   - **Career Outcomes**: Potential career paths and job prospects after completing the program.
-  - **Comparison Metrics**: Key metrics (e.g., cost, acceptance rate, student satisfaction) to help the student compare programs.
-
-
-
-
-### Physical Architecture
-#### Component Analysis
+  - **Comparison Metrics**: Key metrics (e.g., cost, acceptance rate, student satisfaction) to help the student compare programs. -->
