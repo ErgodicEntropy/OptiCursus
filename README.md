@@ -115,16 +115,12 @@ The system relies on two main types of input from the student: **Preferences** a
 - **Preferences**
   - **Favorite Subjects**: Subjects the student enjoys or excels in (e.g., mathematics, literature, biology).
   - **Career Goals**: Desired career paths or industries (e.g., software engineering, medicine, finance).
-  - **Learning Style**: Preferred methods of learning (e.g., hands-on, theoretical, collaborative).
-  - **Passions/Hobbies**: Non-academic interests that could influence program choice (e.g., music, sports, coding).
-  - **Location Preferences**: Preferred study locations (e.g., local, international, specific countries).
+  - **Constraints**: Limitations such as budget, time, or accessibility.
 
 - **Profile**
-  - **Academic Background**: Grades, courses taken, certifications, projects, and academic achievements (CV, Resume, Potrfolio).
+  - **Academic Background**: Grades, courses taken, standardized test scores, prerequisite courses, certifications, projects, and academic achievements (CV, Resume, Potrfolio).
   - **Skills**: Technical or soft skills (e.g., programming, public speaking, teamwork).
-  - **Eligibility**: Entry requirements met (e.g., standardized test scores, prerequisite courses).
   - **Achievements**: Awards, certifications, or extracurricular activities.
-  - **Constraints**: Limitations such as budget, time, or accessibility.
 
 
 **2. Matching Algorithm (OptiCursus Engine)**

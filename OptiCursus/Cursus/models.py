@@ -12,6 +12,9 @@ class Cursus(models.Model):
     type = models.CharField(max_length=20)
     date_created = models.DateTimeField()
     
+
+
     def __repr__(self):
         return f'<Cursus {self.id}>'  % self.id
 
+    

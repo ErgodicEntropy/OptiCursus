@@ -1,6 +1,47 @@
 from django.shortcuts import render, HttpResponse, redirect, get_object_or_404
 from django.http import HttpRequest, Http404
 from django.urls import reverse
+import os
+import requests
+from bs4 import BeautifulSoup
+from langchain.llms import Cohere
+from langchain.chains import LLMChain, ConversationChain, RetrievalQA, ConversationalRetrievalChain
+from langchain.memory import ConversationSummaryMemory, ConversationBufferMemory, ChatMessageHistory
+from langchain.agents import initialize_agent, Tool
+from langchain.document_loaders import PyPDFLoader, TextLoader, DirectoryLoader
+from langchain.text_splitter import RecursiveCharacterTextSplitter
+from langchain.embeddings import HuggingFaceEmbeddings
+from langchain.vectorstores import faiss, chroma, pinecone
+
+
+
+cohere_api_token = os.environ.get("COHERE_API_TOKEN")
+llm = Cohere(cohere_api_key=cohere_api_token)
+
+def scrap_web(url: str): #https://cataloguelm.campusfrance.org/master/
+    try:        
+        response = requests.get(url)
+        response.raise_for_status()
+        # Parse the HTML content using BeautifulSoup
+        soup = BeautifulSoup(response.text, "html.parser")
+        # Extract the title
+        title = soup.title.string if soup.title else "No Title"
+        # Extract the first 200 characters of text
+        text = soup.get_text()[:200] + "..." if soup.get_text() else "No Text"
+        return f"Title: {title}\nText Snippet: {text}"
+    except Exception as e: 
+        return f"error {e}"
+
+tools = Tool(name="Web Scraper", func=scrap_web, description="Useful for scrapping cursus programs")
+
+
+scrapper_agent = initialize_agent(
+    tools=tools,
+    llm=llm,
+    agent="zero-shot-react-description",  # Agent type
+    verbose=True  # Print detailed logs
+)
+
 
 # Create your views here.
 
