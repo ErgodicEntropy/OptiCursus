@@ -3,17 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Energy Questionnaire</title>
+    <title>User Input</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/data.css') }}"> 
 </head>
 <body>
     <div class="content">
-        <h1>Energy Questionnaire</h1>
-        <p>Please answer the following questions to help us measure your energy levels.</p>
+        <h1>Tell us about you!</h1>
+        <p>Please answer the following questions to help us estimate your profile</p>
         <form id="mainForm" action="/data" method="POST">
-            <!-- Intellectual/Cognitive Energy: Clarity of Thought, Focus/Attention, Mental Fatigue, Task Readiness, Cognitive Load -->
-            <h5>Focus:</h5>
-            <label for="focus"> How focused do you feel right now?</label>
+            <h5>Favorite Subjects</h5>
             <div style="display: flex; align-items: center; gap: 10px;">
                 <span style="flex-shrink: 0;">Completely Disordered</span>
                 <input type="range" id="focus" name="focus" min="0" max="100" value="50" style="flex-grow: 1;" oninput="updateValue(this.value,'focus-value')">
@@ -21,7 +19,7 @@
             </div>
             <span id="focus-value">50</span>
 
-            <h6>Readiness:</h6>
+            <h6>Career Goals</h6>
             <label for="readiness"> How prepared do you feel to tackle a challenging task right now?</label>
             <div style="display: flex; align-items: center; gap: 10px;">
                 <span style="flex-shrink: 0;">Not Prepared</span>
@@ -31,7 +29,7 @@
             <span id="readiness-value">50</span>
 
             <!-- Psychological/Mental Energy: Motivation, Stress Level, Emotional State -->
-            <h5>Motivation:</h5>
+            <h5>Level</h5>
             <label for="motivation"> How willing do you feel to work on something mentally challenging?</label>
             <div style="display: flex; align-items: center; gap: 10px;">
                 <span style="flex-shrink: 0;">Disinterested</span>
@@ -41,7 +39,7 @@
             <span id="motivation-value">50</span>
                 
             <!-- Physical Energy -->
-            <h5>Physical Fatigue:</h5>
+            <h5>Constraints:</h5>
             <label for="physical_fatigue"> How much physically energized you feel?</label>
             <div style="display: flex; align-items: center; gap: 10px;">
                 <span style="flex-shrink: 0;">Tired</span>
@@ -86,10 +84,14 @@
                 <p id="loading-message"></p>
             </div>
         </div>                
+
+        <form id="UploadFile" action="" method="POST" enctype="multipart/form-data">
+            <input type="file" name="CV" accept=".pdf,.docx,.txt">
+            <input type="submit" value="Submit">
+        </form>
         
         <form id="redirectForm" action="/output" method="POST">
-            <!-- may need hidden input -->
-            <!-- <input type="hidden" value="True"> -->
+            <input type="text" name="url" id="url" placeholder="Please insert the cursus catalog URl">
         </form>
         <script src = "{{ url_for('static', filename='js/datascript.js') }}"></script>
     </div>

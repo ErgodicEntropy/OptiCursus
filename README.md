@@ -113,14 +113,18 @@ OptiCursus is designed to evolve and scale, ensuring long-term value for users a
 The system relies on two main types of input from the student: **Preferences** and **Profile**.
 
 - **Preferences**
-  - **Favorite Subjects**: Subjects the student enjoys or excels in (e.g., mathematics, literature, biology).
+  - **Favorite Domains**: Subjects the student enjoys or excels in (e.g., mathematics, literature, biology).
   - **Career Goals**: Desired career paths or industries (e.g., software engineering, medicine, finance).
-  - **Constraints**: Limitations such as budget, time, or accessibility.
-
+  - **Cursus Level**: the program level searched for (e.g. Bachelor, Master, PhD)
 - **Profile**
-  - **Academic Background**: Grades, courses taken, standardized test scores, prerequisite courses, certifications, projects, and academic achievements (CV, Resume, Potrfolio).
-  - **Skills**: Technical or soft skills (e.g., programming, public speaking, teamwork).
-  - **Achievements**: Awards, certifications, or extracurricular activities.
+  - **CV or Resume**: Academic/Industry Background (CV or Resume): Certifications, Skills (Hard and Soft), Experience Achievements, Projects Extracurricular Activities, Awards, Linguistic Skills   
+  - **Portfolio**: A collection of work samples showcasing skills (e.g., GitHub projects, design portfolios, or writing samples). 
+  - **Motivation Letter**:  A document explaining your interest and fit for a role or program (e.g., job application or university admission letter)
+  -  **LinkedIn Profile**:  A professional online presence summarizing career history and skills (e.g., profile with endorsements and activiy posts).  
+  -  **Educational Level**:  Highest formal education achieved or pursued (e.g. Bachelor, Master, PhD, Courses taken with Domains)
+  -  **GPA**: Numerical representation of academic performance and grades (e.g., 3.8/4.0 or 9.5/10)
+  -  **Constraints**: Limitations such as budget, time, or accessibility. 
+
 
 
 **2. Matching Algorithm (OptiCursus Engine)**
@@ -196,25 +200,15 @@ The final output is a list of **Aligned Cursus Programs** that match the student
       - Example: A virtual counselor explains why a specific program is a good fit and answers questions about application requirements.
 
 
-<!-- ### Physical Architecture
+### Physical Architecture
+![Physical Architecture](diagrams/Physical%20Architecture.jpeg)
 #### Component Analysis
 
-**1. Student Input**
-The system relies on two main types of input from the student: **Preferences** and **Profile**.
+**1. Student**
 
-- **a. Preferences**
-  - **Favorite Subjects**: Subjects the student enjoys or excels in (e.g., mathematics, literature, biology).
-  - **Career Goals**: Desired career paths or industries (e.g., software engineering, medicine, finance).
-  - **Learning Style**: Preferred methods of learning (e.g., hands-on, theoretical, collaborative).
-  - **Passions/Hobbies**: Non-academic interests that could influence program choice (e.g., music, sports, coding).
-  - **Location Preferences**: Preferred study locations (e.g., local, international, specific countries).
-
-- **b. Profile**
-  - **Academic Background**: Grades, courses taken, and academic achievements (CV or Resume).
-  - **Skills**: Technical or soft skills (e.g., programming, public speaking, teamwork).
-  - **Eligibility**: Entry requirements met (e.g., standardized test scores, prerequisite courses).
-  - **Achievements**: Awards, certifications, or extracurricular activities.
-  - **Constraints**: Limitations such as budget, time, or accessibility.
+- **User Registration**: The process where a new user signs up for an account by providing basic information (e.g., email, password).  
+- **Profile Creation**: The step where a registered user adds personal details and preferences to customize their account (e.g., name, bio, profile picture).  
+- **Input Data**: The system relies on two main types of input from the student: **Preferences** and **Profile**.
 
 **2. System Processing**
 The system processes the student's input using advanced algorithms and strategies.
@@ -226,20 +220,27 @@ The system processes the student's input using advanced algorithms and strategie
     - Minimizes redundancy by recommending programs that cover a wide range of options.
     - Example: Recommends blended programs (e.g., computational finance) instead of only pure computer science or business programs.
 
-- **b. Eligibility Score**
+- **Preference Score**  
+  - **Purpose**: Evaluates how well a program aligns with the student’s preferences and goals.  
+  - **How It Works**:  
+    - Calculates a score based on the alignment between the student’s preferences (e.g., location, program type, career goals) and the program’s offerings.  
+    - Ranks programs by how closely they match the student’s desired criteria.  
+    - Example: Prioritizes programs in a specific location or with a focus on research if the student prefers these features.  
+
+- **c. Multi-Variate Optimization**
+  - **Purpose**: Balances multiple factors (e.g., preferences, profile, eligibility) to find the best-fit programs.
+  - **How It Works**:
+    - Uses **weighted optimization** to prioritize factors based on their importance to the student.
+    - Example: Recommends programs with strong career outcomes if the student prioritizes career goals over location.
+
+- **Eligibility Score**
   - **Purpose**: Evaluates how well the student meets the entry requirements for each program.
   - **How It Works**:
     - Calculates a score based on the student’s academic background, skills, and achievements.
     - Ranks programs by how closely the student’s profile matches their eligibility criteria.
     - Example: Prioritizes programs requiring a high GPA if the student meets this criterion.
 
-- **c. Multi-Factored Optimization**
-  - **Purpose**: Balances multiple factors (e.g., preferences, profile, eligibility) to find the best-fit programs.
-  - **How It Works**:
-    - Uses **weighted optimization** to prioritize factors based on their importance to the student.
-    - Example: Recommends programs with strong career outcomes if the student prioritizes career goals over location.
-
-- **d. Barbell Strategy**
+- **Barbell Strategy**
   - **Purpose**: Balances **safe choices** and **aspirational choices** in the recommendations.
   - **How It Works**:
     - Recommends a mix of:
@@ -249,10 +250,39 @@ The system processes the student's input using advanced algorithms and strategie
 
 
 **3. Output: Aligned Cursus Programs**
-The final output is a list of **Aligned Cursus Programs** that match the student’s profile, preferences, and goals. Each recommendation includes:
+The final output is a list of **Aligned Cursus Programs** that match the student’s profile, preferences, and goals.
 
-  - **Program Details**: Name, institution, curriculum, duration, and location.
-  - **Alignment Score**: A score indicating how well the program aligns with the student’s input.
-  - **Eligibility Status**: Whether the student meets the program’s entry requirements.
-  - **Career Outcomes**: Potential career paths and job prospects after completing the program.
-  - **Comparison Metrics**: Key metrics (e.g., cost, acceptance rate, student satisfaction) to help the student compare programs. -->
+**4. Post Processing**
+  - **Recommendation**
+    - **Program Details**: Name, institution, curriculum, duration, and location.
+    - **Alignment Score**: A score indicating how well the program aligns with the student’s input.
+    - **Eligibility Status**: Whether the student meets the program’s entry requirements.
+    - **Career Outcomes**: Potential career paths and job prospects after completing the program.
+    - **Comparison Metrics**: Key metrics (e.g., cost, acceptance rate, student satisfaction) to help the student compare programs.
+  - **Context-Aware Explanation**
+    - **Purpose**: Provides clear, context-aware explanations for why a program is recommended, helping students understand the reasoning behind each suggestion.
+    - **How It Works**:
+      - Uses **natural language processing (NLP)** to generate explanations tailored to the student’s profile and preferences.
+      - Highlights key factors (e.g., alignment with career goals, eligibility status) that influenced the recommendation.
+      - Example: “This program is recommended because it aligns with your interest in data science and offers strong career outcomes in your preferred location.”
+
+  - **Programs Comparison**
+    - **Purpose**: Allows students to compare recommended programs side-by-side, making it easier to evaluate trade-offs and make informed decisions.
+    - **How It Works**:
+      - Displays key metrics (e.g., cost, duration, acceptance rate) in a tabular or visual format.
+      - Enables students to rank programs based on their priorities (e.g., cost vs. career outcomes).
+      - Example: Compare two programs based on cost, location, and career outcomes.
+
+  - **Career Pathways Exploration**
+    - **Purpose**: Helps students explore long-term career pathways associated with recommended programs, connecting education to future opportunities.
+    - **How It Works**:
+      - Links programs to potential career paths and job market trends.
+      - Provides insights into salary ranges, job growth, and required skills for each career.
+      - Example: Show how a Master’s in Data Science can lead to careers as a Data Scientist, Machine Learning Engineer, or Business Analyst.
+
+  - **Virtual Counseling**
+    - **Purpose**: Offers personalized guidance through AI-powered virtual counseling, simulating a one-on-one counseling session.
+    - **How It Works**:
+      - Uses **AI chatbots** or **virtual assistants** to answer student questions and provide recommendations.
+      - Offers tailored advice based on the student’s profile and preferences.
+      - Example: A virtual counselor explains why a specific program is a good fit and answers questions about application requirements.
