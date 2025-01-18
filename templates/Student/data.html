@@ -7,93 +7,105 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/data.css') }}"> 
 </head>
 <body>
+    <h1>Tell us about you!</h1>
+    <p>Please answer the following questions to help us estimate your preferences and profile</p>
     <div class="content">
-        <h1>Tell us about you!</h1>
-        <p>Please answer the following questions to help us estimate your profile</p>
-        <form id="mainForm" action="/data" method="POST">
-            <h5>Favorite Subjects</h5>
-            <div style="display: flex; align-items: center; gap: 10px;">
-                <span style="flex-shrink: 0;">Completely Disordered</span>
-                <input type="range" id="focus" name="focus" min="0" max="100" value="50" style="flex-grow: 1;" oninput="updateValue(this.value,'focus-value')">
-                <span style="flex-shrink: 0;">Very Focused</span>
-            </div>
-            <span id="focus-value">50</span>
-
-            <h6>Career Goals</h6>
-            <label for="readiness"> How prepared do you feel to tackle a challenging task right now?</label>
-            <div style="display: flex; align-items: center; gap: 10px;">
-                <span style="flex-shrink: 0;">Not Prepared</span>
-                <input type="range" id="readiness" name="readiness" min="0" max="100" value="50" style="flex-grow: 1;" oninput="updateValue(this.value, 'readiness-value')">
-                <span style="flex-shrink: 0;">Fully Prepared</span>
-            </div>
-            <span id="readiness-value">50</span>
-
-            <!-- Psychological/Mental Energy: Motivation, Stress Level, Emotional State -->
-            <h5>Level</h5>
-            <label for="motivation"> How willing do you feel to work on something mentally challenging?</label>
-            <div style="display: flex; align-items: center; gap: 10px;">
-                <span style="flex-shrink: 0;">Disinterested</span>
-                <input type="range" id="motivation" name="motivation" min="0" max="100" value="50" style="flex-grow: 1;" oninput="updateValue(this.value, 'motivation-value')">
-                <span style="flex-shrink: 0;">Motivated</span>
-            </div>
-            <span id="motivation-value">50</span>
-                
-            <!-- Physical Energy -->
-            <h5>Constraints:</h5>
-            <label for="physical_fatigue"> How much physically energized you feel?</label>
-            <div style="display: flex; align-items: center; gap: 10px;">
-                <span style="flex-shrink: 0;">Tired</span>
-                <input type="range" id="physical_fatigue" name="physical_fatigue" min="0" max="100" value="50" style="flex-grow: 1;" oninput="updateValue(this.value, 'physical_fatigue-value')">
-                <span style="flex-shrink: 0;">Strong</span>
-            </div>
-            <span id="physical_fatigue-value">50</span>
-        
-            <!-- Temporal Energy: Circadian Rhythm (Peak Times/Cortisol Level), Energy Trends -->
-            <!-- Circadian Rhythm (Peak Times/Cortisol Level) -->
-             <h5>Circadian Rhythm:</h5> 
-            <label for="circadian_rhythm">Set your peak hours</label>
-            <select id="circadian_rhythm" name="circadian_rhythm">
-                <option value="Early Morning">Early Morning (5AM-9AM)</option>
-                <option value="Late Morning">Late Morning (9AM-12PM)</option>
-                <option value="Afternoon">Afternoon (12PM-5PM)</option>
-                <option value="Evening">Evening (5PM-8PM)</option>
-                <option value="Night">Night (8PM-12AM)</option>
-                <option value="Midnight">Midnight (12AM-5AM)</option>
+        <h2>Preferences</h2>
+        <form id="mainForm" action="/Preferences" method="POST">
+            <h5>Favorite Domain</h5>
+            <label for="favorite_domain">What is your favorite domain ?</label>
+            <select id="favorite_domain" name="favorite_domain" onchange="showCustomDomain(this)">
+                <option value="" disabled selected>Select your favorite domain</option>
+                <option value="AI">Artificial Intelligence</option>
+                <option value="Cybersecurity">Cybersecurity</option>
+                <option value="DataScience">Data Science</option>
+                <option value="RenewableEnergy">Renewable Energy</option>
+                <option value="AddDomain">Add a domain</option>
             </select>
-        
-            <!-- Environmental/Social Energy: Social Interaction, External Stimulation -->
-            <!-- External Stimulation -->
-            <h5>External Stimulation:</h5>
-            <label for="external_stimulation">How supportive does your environment feel to your energy right now?</label>
-            <div style="display: flex; align-items: center; gap: 10px;">
-                <span style="flex-shrink: 0;">Very Hostile</span>
-                <input type="range" id="external_stimulation" name="external_stimulation" min="0" max="100" value="50" style="flex-grow: 1;" oninput="updateValue(this.value, 'external_stimulation-value')">
-                <span style="flex-shrink: 0;">Very Friendly</span>
+
+            <div id="domainOverlay" style="display: none;">
+                <div id="customDomainInput">
+                    <label for="custom_domain">Specify your domain:</label>
+                    <input type="text" id="custom_domain" name="custom_domain" placeholder="Enter your custom domain">
+                    <button type="button" onclick="SaveUserDomain()">Done</button>
+                </div>    
             </div>
-            <span id="external_stimulation-value">50</span>
-            
+
+            <h5>Career Goals</h5>
+            <label for="career_goal">What is your career goal ?</label>
+            <select id="career_goal" name="career_goal" onchange="showCustomGoal(this)">
+                <option value="" disabled selected>Select your career goal</option>
+                <option value="DataScientist">Become a Data Scientist</option>
+                <option value="SoftwareEngineer">Become a Software Engineer</option>
+                <option value="AcademicResearcher">Pursue Academic Research</option>
+                <option value="Entrepreneur">Start My Own Business</option>
+                <option value="AddGoal">Add a career goal</option>
+            </select>
+
+            <div id="goalOverlay" style="display: none;">
+                <div id="customGoalInput">
+                    <label for="custom_goal">Specify your career goal:</label>
+                    <input type="text" id="custom_goal" name="custom_goal" placeholder="Enter your custom career goal">
+                    <button type="button" onclick="SaveUserGoal()">Done</button>
+                </div>    
+            </div>
+
+            <h5>Cursus Level</h5> 
+            <label for="cursus_level">What level interests you?</label>
+            <select id="cursus_level" name="cursus_level" onchange="showCustomCursusLevel(this)">
+                <option value="" disabled selected>Select your level</option>
+                <option value="Associate">Associate Degree</option>
+                <option value="Bachelor">Bachelor</option>
+                <option value="MasterR">Master (Research)</option>
+                <option value="MasterP">Master (Professional)</option>
+                <option value="PhD">PhD</option>
+                <option value="PGDip">Postgraduate Diploma</option>
+                <option value="PGCert">Postgraduate Certificate</option>
+                <option value="Executive">Executive Education</option>
+                <option value="Foundation">Foundation Program</option>
+                <option value="DualDegree">Dual Degree</option>
+                <option value="JointDegree">Joint Degree</option>
+                <option value="Online">Online Degree</option>
+                <option value="AddLevel">Add a specific level</option>
+            </select>
+
+            <div id="levelOverlay" style="display: none;">
+                <div id="customLevelInput">
+                    <label for="custom_level">Specify level of your interest:</label>
+                    <input type="text" id="custom_level" name="custom_level" placeholder="Enter a cursus level of your choice">
+                    <button type="button" onclick="SaveCursusLevel()">Done</button>
+                </div>    
+            </div>                                            
+
+            <h5>Catalog Source</h5>
+            <div id="url_source">
+                <input type="text" name="url" id="url" placeholder="Please insert the cursus catalog URL">
+                <button type="button" onclick="SaveURL()">Save</button>
+            </div>        
+
             <div class="submitter">
                 <input type="submit" value="Submit">
             </div>
             
         </form>
-
-        <div id="loading-overlay">
-            <div id="loading-container">
-                <div id="loading-progress"></div>
-                <p id="loading-message"></p>
-            </div>
-        </div>                
-
-        <form id="UploadFile" action="" method="POST" enctype="multipart/form-data">
-            <input type="file" name="CV" accept=".pdf,.docx,.txt">
-            <input type="submit" value="Submit">
-        </form>
-        
-        <form id="redirectForm" action="/output" method="POST">
-            <input type="text" name="url" id="url" placeholder="Please insert the cursus catalog URl">
-        </form>
-        <script src = "{{ url_for('static', filename='js/datascript.js') }}"></script>
     </div>
+    <div class="content">
+        <h2>Profile</h2>
+        <h5>Curriculum Vitae</h5>
+        <form id="UploadCV" action="/CVHandler" method="POST" enctype="multipart/form-data"> {% csrf_token %}
+            <input type="file" name="CV" accept=".pdf,.docx,.txt">
+            <input type="submit" value="Upload">
+        </form>    
+    </div>
+
+
+    <div id="loading-overlay">
+        <div id="loading-container">
+            <div id="loading-progress"></div>
+            <p id="loading-message"></p>
+        </div>
+    </div>                
+
+        <script src = "{{ url_for('static', filename='js/data.js') }}"></script>
 </body>
 </html>

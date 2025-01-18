@@ -36,6 +36,10 @@ form {
     gap: 15px;
 }
 
+#UploadCV {
+    align-items: center;
+}
+
 label {
     font-size: 1rem;
     color: #f1f1f1;
@@ -64,9 +68,6 @@ select:focus {
     border-color: #4caf50;
 }
 
-input[type="range"] {
-    width: 100%;
-}
 .submitter {
     align-items: center;
 }
@@ -74,7 +75,6 @@ input[type="range"] {
     align-items: center;
 }
 input[type="submit"] {
-    width: 50%;
     padding: 12px 20px;
     border: none;
     border-radius: 5px;
@@ -97,9 +97,9 @@ input[type="submit"]:hover {
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent black background */
-    display: flex;
     justify-content: center;
     align-items: center;
+    backdrop-filter: blur(10px);
     z-index: 1002; /* Ensure it's above other elements */
     display: none; /* Hidden by default */
 }

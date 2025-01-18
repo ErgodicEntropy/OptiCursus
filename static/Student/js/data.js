@@ -18,6 +18,55 @@ function updateLoadingMessage(message) {
     document.getElementById('loading-message').textContent = message;
 }
 
+function showCustomDomain(select){
+    const overlay = document.getElementById("domainOverlay");
+    if (select.value === "AddDomain") {
+        overlay.style.display = 'block';
+    }
+}
+
+function SaveUserDomain(){
+    const overlay = document.getElementById("domainOverlay");
+    overlay.style.display = 'none';
+}
+
+function showCustomGoal(select){
+    const overlay = document.getElementById("goalOverlay");
+    if (select.value === "AddGoal") {
+        overlay.style.display = 'block';
+    }
+}
+
+function SaveUserGoal(){
+    const overlay = document.getElementById("goalOverlay");
+    overlay.style.display = 'none';
+}
+
+function showCustomCursusLevel(select){
+    const overlay = document.getElementById("levelOverlay");
+    if (select.value === "AddLevel") {
+        overlay.style.display = 'block';
+    }
+}
+
+function SaveCursusLevel(){
+    const overlay = document.getElementById("levelOverlay");
+    overlay.style.display = 'none';
+}
+
+function showCustomStudentLevel(select){
+    const overlay = document.getElementById("studentlevelOverlay");
+    if (select.value === "AddStudentLevel") {
+        overlay.style.display = 'block';
+    }
+}
+
+function SaveStudentLevel(){
+    const overlay = document.getElementById("studentlevelOverlay");
+    overlay.style.display = 'none';
+}
+
+
 document.getElementById('mainForm').addEventListener('submit', function (event) {
     event.preventDefault(); // Prevent default form submission
 
@@ -49,3 +98,5 @@ document.getElementById('mainForm').addEventListener('submit', function (event) 
         hideLoading(); // Hide the loading overlay on error
     });
 });
+
+
