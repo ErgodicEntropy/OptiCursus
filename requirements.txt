@@ -5,6 +5,7 @@ cohere
 faiss-cpu
 chromadb==0.4.3
 transformers
+torch
 sentence-transformers
 tokenizers
 huggingface-hub

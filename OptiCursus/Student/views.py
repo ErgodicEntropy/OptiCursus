@@ -6,7 +6,7 @@ import os
 import requests
 from bs4 import BeautifulSoup
 import settings
-from langchain.llms import Cohere 
+from langchain.llms import Cohere
 from langchain.chains import LLMChain, RetrievalQA, ConversationChain
 from langchain.memory import ChatMessageHistory, ConversationBufferMemory
 #RAG LangChain libs
